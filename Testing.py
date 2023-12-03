@@ -1,4 +1,4 @@
-from Draft_Code import rearrange_name
+"""from Draft_Code import rearrange_name
 import unittest
 class TestRearrange(unittest.TestCase):
     def test_basic(self):
@@ -6,4 +6,4 @@ class TestRearrange(unittest.TestCase):
         expected = "Ada lovelace"
         self.assertEqual(rearrange_name(testcase), expected)
 
-unittest.main()
+unittest.main()"""

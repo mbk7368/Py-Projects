@@ -1,7 +1,17 @@
+##!/usr/bin/env python3
+
 import re
 import csv
-#logfile =  r'/home/student-03-63642734099f/syslog.log'
 
+logfile =  input("Enter the path to the log file:")
+userstatpath = input("Enter the path where you want the statistics file to be saved:")
+errorlogpath = input("Enter the path where you want the ErrorLogs file to be saved:")
+
+def main():
+  userstats_to_csv(userstatpath)
+  errorlogs_to_csv(errorlogpath)
+  if __name__ == "__main__":
+    main()
 
 def error_logs():
     with open(logfile, 'r') as file:
@@ -61,11 +71,3 @@ def userstats_to_csv(file_path):
         data = user_stats()
         for row in data:
             writer.writerow(row.split())
-
-
-def main():
-  logfile =  input("Enter the log file path:")
-  userstats_to_csv(input("Enter the path where you want the statistics file to be saved:"))
-  errorlogs_to_csv(input("Enter the path where you want the ErrorLogs file to be saved:"))
-  if __name__ == "__main__":
-    main()

@@ -166,6 +166,7 @@ if not filename.endswith('.py'):
     filename += '.py'
 if not os.path.exists(filename):
     with open(filename, 'w') as f:
+        f
 #       f.write("""count=10\nfor i in range(count):\n\tprint(f'i am Line {i} in the python code that were created from another code and excuted successfully')\n""")
 #else:
 #    os.remove(filename)
@@ -173,9 +174,8 @@ if not os.path.exists(filename):
 #        f.write("""print("This is a new python file that were recreated")\ncount=10\nfor i in range(count):\n\tprint(f"i am Line {i} in the python code that were created from another code and excuted successfully")\n""")
 #    print(f"Attention, the file {filename} existed but were recreated again!")
 #subprocess.call(['python',filename])
-#sys.exit(0)
+#sys.exit(0),
 #--------------------------------------------------------------------------
-
 import sys
 filename = sys.argv[1]
 def count_character(filename):
