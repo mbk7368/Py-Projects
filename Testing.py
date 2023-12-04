@@ -7,4 +7,3 @@ class TestRearrange(unittest.TestCase):
         self.assertEqual(rearrange_name(testcase), expected)
 
 unittest.main()"""
-mmm
