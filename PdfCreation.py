@@ -1,6 +1,11 @@
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Paragraph, Spacer, Table, Image
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib import colors
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics.charts.piecharts import Pie
+from reportlab.lib.units import inch
+import os
 
 report = SimpleDocTemplate("C:\\Users\\mbk73\\Desktop\\mypdffile.pdf")
 styles = getSampleStyleSheet()
@@ -11,5 +16,9 @@ fruit={"elderberries":1,"figs":1,"apples":2,"durians":3,"bananas":5,"cherries":8
 table_data = []
 for k, v in fruit.items():
     table_data.append([k,v])
-print(table_data)
-report.build([reporttitle])
+tablestyle = [("GRID",(0,0),(-1,-1), .5,colors.black)]
+reportTable = Table(data=table_data, style=tablestyle, hAlign="LEFT")
+reportpie = Pie(width=3*inch, height=3*inch)
+report.build([reporttitle, reportTable])
+
+os.startfile("C:\\Users\\mbk73\\Desktop\\mypdffile.pdf")
