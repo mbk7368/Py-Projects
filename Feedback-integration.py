@@ -29,4 +29,4 @@ for file_path in file_paths:
 if response.status_code == 200:
     print("Data sent successfully")
 else:
-    print("Error sending data, status code:"+ response.status_code)
+    print("Error sending data, status code:"+ str(response.status_code))
