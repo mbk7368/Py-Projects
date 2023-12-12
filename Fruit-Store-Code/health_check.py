@@ -35,8 +35,8 @@ def check_name_resolution():
 def send_alert_email(subject, body):
     sender = "automation@example.com"
     recipient = "student@example.com"
-    email_subject = subject
-    email_body = body
+    email_subject = "Error - {}".format(subject)
+    email_body = "{}\n\nPlease check your system and resolve the issue as soon as possible.".format(body)
     message = emails.generate_email(sender, recipient, email_subject, email_body)
     emails.send_email(message)
 
@@ -47,20 +47,14 @@ def main():
         memory_error = check_available_memory()
         name_resolution_error = check_name_resolution()
 
-        if cpu_usage_error or disk_space_error or memory_error or name_resolution_error:
-            error_subject = "Error - System Alert"
-            error_body = "Please check your system and resolve the issue as soon as possible.\n\n"
-
-            if cpu_usage_error:
-                error_body += "Error - " + cpu_usage_error + "\n\n"
-            if disk_space_error:
-                error_body += "Error - " + disk_space_error + "\n\n"
-            if memory_error:
-                error_body += "Error - " + memory_error + "\n\n"
-            if name_resolution_error:
-                error_body += "Error - " + name_resolution_error + "\n\n"
-
-            send_alert_email(error_subject, error_body)
+        if cpu_usage_error:
+            send_alert_email("CPU usage is over 80%", "Error - CPU usage is over 80%")
+        if disk_space_error:
+            send_alert_email("Available disk space is lower than 20%", "Error - Available disk space is less than 20%")
+        if memory_error:
+            send_alert_email("Available memory is less than 100MB", "Error - Available memory is less than 100MB")
+        if name_resolution_error:
+            send_alert_email("Hostname 'localhost' cannot be resolved to '127.0.0.1'", "Error - localhost cannot be resolved to 127.0.0.1")
 
         time.sleep(60)
 
