@@ -6,7 +6,7 @@ from email.message import EmailMessage
 import mimetypes
 import getpass
 
-def generate_email(sender, receiver, subject, body, attachment):
+def generate_email(sender, receiver, subject, body, attachment=None):
     message = EmailMessage()
     message["From"] = sender
     message["To"] = receiver
@@ -14,15 +14,18 @@ def generate_email(sender, receiver, subject, body, attachment):
     message.set_content(body)
     attachment_file_name = "processed.pdf"
 
-    mime_type, _ = mimetypes.guess_type(attachment)
-    mime_type, mime_subtype = mime_type.split("/", 1)
+    if attachment:
+        attachment_file_name = "processed.pdf"
+        mime_type, _ = mimetypes.guess_type(attachment)
+        mime_type, mime_subtype = mime_type.split("/", 1)
 
-    with open(attachment, "rb") as attachment_file:
-        message.add_attachment(
-            attachment_file.read(),
-            maintype=mime_type,
-            subtype=mime_subtype,
-            filename=attachment_file_name, )
+        with open(attachment, "rb") as attachment_file:
+            message.add_attachment(
+                attachment_file.read(),
+                maintype=mime_type,
+                subtype=mime_subtype,
+                filename=attachment_file_name
+            )
     return message
 
 def send_email(message):
