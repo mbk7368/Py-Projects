@@ -2,13 +2,13 @@
 
 import os
 from datetime import date
-import reports
-from emails import send_email
+from reports import generate_report
 
-folder_path = "supplier-data/descriptions"
+folder_path = "/home/student/supplier-data/descriptions"
 
 def process_data(folder_path):
     fruit_data = []
+    output = []
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".txt"):
             file_path = os.path.join(folder_path, file_name)
@@ -17,19 +17,15 @@ def process_data(folder_path):
                 name = lines[0].strip()
                 weight = lines[1].strip()
                 fruit_data.append({"name": name, "weight": weight})
-    return fruit_data
+    for item in fruit_data:
+        output += "\n\n"
+        output += f"name: {item['name']}\n"
+        output += f"weight: {item['weight']}\n"
+        output += "\n"
+    return output
 
 def main():
-    # Process the data
-    data = process_data(folder_path)
-    # Generate the report text
-    report_text = ""
-    for item in data:
-        report_text += f"name: {item['name']}\nweight: {item['weight']}\n\n"
-    # Generate the report
-    today = date.today().strftime("%B %d, %Y")
-    reports.generate_report("/tmp/processed.pdf", "Processed Update on " + today, report_text)
-
+    generate_report("/tmp/processed.pdf")
     sender = "automation@example.com"
     recipient = "student@example.com"
     subject = "Upload Completed - Online Fruit Store"
