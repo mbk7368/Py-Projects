@@ -4,6 +4,7 @@ import time
 import psutil
 import socket
 import emails
+from emails import send_email
 
 def check_cpu_usage():
     cpu_percent = psutil.cpu_percent(interval=1)
@@ -35,7 +36,7 @@ def send_alert_email(subject):
     recipient = "student@example.com"
     email_subject = f"Error - {subject}"
     message = emails.generate_email(sender, recipient, email_subject, body)
-    emails.send_email(message)
+    send_email(message)
 
 def main():
     while True:

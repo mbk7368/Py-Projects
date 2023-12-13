@@ -4,24 +4,15 @@ import os
 from datetime import date
 import reports
 from emails import send_email
+from reports import read_text_files
+from reports import generate_report
 
-folder_path = "supplier-data/descriptions"
+folder_path = "/home/student/supplier-data/descriptions"
+data = read_text_files(folder_path)
+generate_report("processed.pdf", data)
 
-def process_data(folder_path):
-    fruit_data = []
-    for file_name in os.listdir(folder_path):
-        if file_name.endswith(".txt"):
-            file_path = os.path.join(folder_path, file_name)
-            with open(file_path, "r") as file:
-                lines = file.readlines()
-                name = lines[0].strip()
-                weight = lines[1].strip()
-                fruit_data.append({"name": name, "weight": weight})
-    return fruit_data
 
 def main():
-    # Process the data
-    data = process_data(folder_path)
     # Generate the report text
     report_text = ""
     for item in data:
