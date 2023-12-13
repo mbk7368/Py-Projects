@@ -26,12 +26,6 @@ def process_data(folder_path):
 
 def main():
     generate_report("/tmp/processed.pdf")
-    sender = "automation@example.com"
-    recipient = "student@example.com"
-    subject = "Upload Completed - Online Fruit Store"
-    body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
-    attachment_path = "/tmp/processed.pdf"
-    send_email(sender, recipient, subject, body, attachment_path)
 
 if __name__ == "__main__":
     main()
