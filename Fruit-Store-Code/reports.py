@@ -5,20 +5,19 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from datetime import date
 
-folder_path = "/home/student/supplier-data/descriptions"
+folder_path = ""
 
 def read_text_files(folder_path):
-    data = []
+    fruit_data = []
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".txt"):
             file_path = os.path.join(folder_path, file_name)
             with open(file_path, "r") as file:
-                name = file.readline().strip()  # Read the first line as the name
-                weight = file.readline().strip()  # Read the second line as the weight
-                description = file.read().strip()  # Read the rest as the description
-
-                data.append({"name": name, "weight": weight, "description": description})
-    return data
+                lines = file.readlines()
+                name = lines[0].strip()
+                weight = lines[1].strip()
+                fruit_data.append({"name": name, "weight": weight})
+    return fruit_data
 
 def generate_report(filename):
     data = read_text_files(folder_path)
@@ -33,8 +32,9 @@ def generate_report(filename):
     for item in data:
         name = item["name"]
         weight = item["weight"]
-        description = item["description"]
-        report_content.append(Paragraph(f"name: {name}", styles["BodyText"]))
-        report_content.append(Paragraph(f"weight: {weight}", styles["BodyText"]))
+
+        report_entry = f"name: {name}\nweight: {weight}"
+        report_content.append(Paragraph(report_entry, styles["BodyText"]))
         report_content.append(Spacer(1, 12))  # Add blank line
+
     report.build(report_content)
