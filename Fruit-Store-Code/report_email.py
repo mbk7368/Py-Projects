@@ -4,7 +4,7 @@ import os
 from datetime import date
 from reports import generate_report
 
-folder_path = "/home/student/supplier-data/descriptions"
+folder_path = "/home/student/supplier-data/descriptions/"
 
 def process_data(folder_path):
     fruit_data = []
