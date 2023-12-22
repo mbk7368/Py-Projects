@@ -5,9 +5,9 @@ import requests
 import json
 
 # Configuration
-description_directory = "supplier-data/descriptions"
-image_directory = "supplier-data/images"
-url = "http://[external-IP-address]/fruits"
+description_directory = "/home/student/supplier-data/descriptions"
+image_directory = "/home/student/supplier-data/images"
+url = "http://34.148.143.46/fruits"
 
 def process_text_files(description_directory, image_directory, url):
     # Get the list of text files in the description directory

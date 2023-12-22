@@ -6,8 +6,8 @@ import os
 # This example shows how multiple files can be uploaded using
 # the Python Requests module
 
-url = "http://localhost/upload/"
-directory = "/path/to/images/"
+url = "http://35.202.41.46/upload/"
+directory = "home/student/supplier-data/images"
 
 # Get the list of files in the directory
 file_list = os.listdir(directory)

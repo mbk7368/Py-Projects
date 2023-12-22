@@ -23,7 +23,7 @@ with open(attachment_path, "rb") as t:
     message.add_attachment(t.read(),maintype=mime_type,subtype=mimesubtype,filename=os.path.basename(attachment_path))
 
 mailserver = smtplib.SMTP_SSL("smtp.gmail.com")
-mailpass = getpass.getpass("736891177")
+mailpass = getpass.getpass("password:")
 mailserver.login(sender, mailpass)
 mailserver.send_message(message)
 mailserver.quit()

@@ -5,6 +5,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from datetime import date
 
+folder_path = ""
+
 def read_text_files(folder_path):
     fruit_data = []
     for file_name in os.listdir(folder_path):
@@ -17,7 +19,8 @@ def read_text_files(folder_path):
                 fruit_data.append({"name": name, "weight": weight})
     return fruit_data
 
-def generate_report(filename, data):
+def generate_report(filename):
+    data = read_text_files(folder_path)
     today = date.today().strftime("%B %d, %Y")
     styles = getSampleStyleSheet()
     report = SimpleDocTemplate(filename)
