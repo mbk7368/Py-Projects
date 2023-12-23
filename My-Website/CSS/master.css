@@ -1,6 +1,6 @@
   a         {color: blue;    text-decoration: none; }
   a:hover   {color: rgb(100 , 10, 10);    text-decoration: none; }
-  body      {background-color: beige; color: black; font-family: Roboto,Amiko,arial, Helvetica, sans-serif; text-align: center;   }
+  body      {background-color: beige; color: black; font-family: Roboto,Amiko,verdana,arial, Helvetica, sans-serif; text-align: center;   }
   footer    {margin-top: 2rem;    margin-bottom: 2rem;  }
   h1        {margin-bottom: 0.5rem;    margin-top: 3rem;   }
   h2        {color: rgb(50,50,10); margin-top: 3rem; margin-bottom: 3rem; border: 4px black double;padding: 10px; padding-left: 100px; padding-right: 100px; display: inline-block;  }
