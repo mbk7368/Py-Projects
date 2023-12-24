@@ -66,7 +66,6 @@ def generate_pdf(filename, title, additional_info, table_data):
   report_table = Table(data=table_data, style=table_style, hAlign="LEFT")
   empty_line = Spacer(1,20)
   report.build([report_title, empty_line, report_info, empty_line, report_table])
-
 def send_email(sender, recipient, subject, body, attachment_path):
   """Creates an email with an attachement."""
   # Basic Email formatting
