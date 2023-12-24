@@ -1,3 +1,4 @@
+  .responsive-image { width: 50%; @media only screen and  (max-width: 1200px) {width:100%; }       }
   a         {color: blue;    text-decoration: none; }
   a:hover   {color: rgb(100 , 10, 10);    text-decoration: none; }
   body      {background-color: beige; color: black; font-family: Roboto,Amiko,verdana,arial, Helvetica, sans-serif; text-align: center;   }
